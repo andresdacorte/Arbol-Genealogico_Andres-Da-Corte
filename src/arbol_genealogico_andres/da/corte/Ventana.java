@@ -9,37 +9,17 @@ package arbol_genealogico_andres.da.corte;
  * @author dacor
  */
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.*;
-import java.awt.Font;
-import java.awt.Color;
-
+import java.awt.event.*;
+import java.io.File;
 
 public class Ventana extends javax.swing.JFrame {
-    
-    private JFrame frame;
-    private JButton cargarArchivoButton;
-    private JButton mostrarArbolButton;
-    
+
     /**
      * Creates new form Ventana
      */
-    
     public Ventana() {
-        frame = new JFrame("Visor de Árbol Genealógico");
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
         initComponents();
-        
     }
 
     /**
@@ -52,7 +32,11 @@ public class Ventana extends javax.swing.JFrame {
     private void initComponents() {
 
         CargarArchivo = new javax.swing.JButton();
-        MostrarArbol = new javax.swing.JButton();
+        MostrarGrafo = new javax.swing.JButton();
+        BuscarPorNombre = new javax.swing.JButton();
+        VerRegistro = new javax.swing.JButton();
+        MostrarAntepasados = new javax.swing.JButton();
+        BuscarPorTitulo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,32 +47,73 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        MostrarArbol.setText("Mostrar Arbol");
-        MostrarArbol.addActionListener(new java.awt.event.ActionListener() {
+        MostrarGrafo.setText("Mostrar Grafo");
+        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarArbolActionPerformed(evt);
+                MostrarGrafoActionPerformed(evt);
             }
         });
+
+        BuscarPorNombre.setText("Buscar por Nombre");
+        BuscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarPorNombreActionPerformed(evt);
+            }
+        });
+
+        VerRegistro.setText("Ver Registro");
+        VerRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerRegistroActionPerformed(evt);
+            }
+        });
+
+        MostrarAntepasados.setText("Mostrar Antepasados");
+        MostrarAntepasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarAntepasadosActionPerformed(evt);
+            }
+        });
+
+        BuscarPorTitulo.setText("Buscar por Titulo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(CargarArchivo)
-                .addGap(60, 60, 60)
-                .addComponent(MostrarArbol)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CargarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BuscarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MostrarGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(VerRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(MostrarAntepasados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(BuscarPorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CargarArchivo)
-                    .addComponent(MostrarArbol))
-                .addContainerGap(228, Short.MAX_VALUE))
+                    .addComponent(MostrarGrafo))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BuscarPorNombre)
+                    .addComponent(VerRegistro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BuscarPorTitulo)
+                    .addComponent(MostrarAntepasados))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,30 +121,325 @@ public class Ventana extends javax.swing.JFrame {
 
     private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Seleccionar Archivo JSON");
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                int result = fileChooser.showOpenDialog(frame);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-                    CargarArchivoJSON.cargarDesdeJSON(filePath);
-                    Nodo raiz = ArbolGlobal.getArbolGenealogicoGlobal().getRaiz();
-                    if (raiz != null) {
-                        JOptionPane.showMessageDialog(frame, "Archivo cargado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(frame, "No se pudo cargar el árbol genealógico", "Error", JOptionPane.ERROR_MESSAGE);
+                fileChooser.setDialogTitle("Seleccionar archivo JSON");
+                int resultado = fileChooser.showOpenDialog(null);
+                
+                ArbolGlobal.ArbolGlobal.limpiarArbol();
+                
+
+                if (resultado == JFileChooser.APPROVE_OPTION) {
+                    File archivoSeleccionado = fileChooser.getSelectedFile();
+                    try {
+                        // Pasar el archivo JSON al método cargarDesdeJSON
+                        ArbolGlobal.ArbolGlobal.cargarDesdeJSON(archivoSeleccionado.getAbsolutePath());
+                        JOptionPane.showMessageDialog(null, "Archivo cargado correctamente.");
+                        System.out.println("Árbol cargado:");
+                        ArbolGlobal.ArbolGlobal.imprimirArbol();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Error al cargar el archivo JSON: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        ex.printStackTrace();
                     }
                 }
     }//GEN-LAST:event_CargarArchivoActionPerformed
 
-    private void MostrarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArbolActionPerformed
-        Nodo raiz = ArbolGlobal.getArbolGenealogicoGlobal().getRaiz();
-                if (raiz != null) {
-                    GrafoArbolGenealogico grafoArbol = new GrafoArbolGenealogico();
-                    grafoArbol.mostrarGrafo(raiz);
-                } else {
-                    JOptionPane.showMessageDialog(frame, "No hay un árbol cargado para mostrar", "Error", JOptionPane.ERROR_MESSAGE);
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            Grafo grafo = new Grafo(); // Crear instancia de Grafo
+            grafo.construirDesdeArbol(ArbolGlobal.ArbolGlobal.getRaiz()); // Construir el grafo a partir de la raíz del árbol
+            grafo.mostrarGrafo(); // Mostrar el grafo
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al mostrar el grafo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
+
+    private void BuscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorNombreActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            String cadenaBusqueda = JOptionPane.showInputDialog(this, "Introduce el nombre y apellido o mote de la persona:");
+            if (cadenaBusqueda == null || cadenaBusqueda.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Buscar nodos que coincidan con la cadena de búsqueda
+            Lista<Nodo> resultados = new Lista<>();
+            buscarPorNombreOMote(ArbolGlobal.ArbolGlobal.getRaiz(), cadenaBusqueda.trim(), resultados);
+
+            if (resultados.esVacia()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros que coincidan con la búsqueda.", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Construir una lista para mostrar al usuario
+            String[] opciones = new String[resultados.tamaño()];
+            Nodo[] nodos = new Nodo[resultados.tamaño()];
+            int index = 0;
+
+            for (Nodo nodo : resultados) {
+                opciones[index] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+                nodos[index] = nodo;
+                index++;
+            }
+
+            // Mostrar opciones al usuario
+            String seleccionado = (String) JOptionPane.showInputDialog(
+                    this,
+                    "Selecciona un registro:",
+                    "Resultados de la Búsqueda",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    opciones,
+                    null);
+
+            if (seleccionado != null) {
+                for (int i = 0; i < opciones.length; i++) {
+                    if (opciones[i].equals(seleccionado)) {
+                        Nodo nodoSeleccionado = nodos[i];
+                        construirArbolDeDescendencia(nodoSeleccionado); // Mostrar el árbol de descendencia gráficamente
+                        break;
+                    }
                 }
-    }//GEN-LAST:event_MostrarArbolActionPerformed
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BuscarPorNombreActionPerformed
+
+    private void VerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerRegistroActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            // Obtener todos los integrantes del árbol
+            Lista<Nodo> integrantes = new Lista<>();
+            obtenerIntegrantes(ArbolGlobal.ArbolGlobal.getRaiz(), integrantes);
+
+            // Mostrar la lista en un cuadro de diálogo
+            String[] nombres = new String[integrantes.tamaño()];
+            Nodo[] nodos = new Nodo[integrantes.tamaño()];
+            int index = 0;
+
+            for (Nodo nodo : integrantes) {
+                nombres[index] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+                nodos[index] = nodo;
+                index++;
+            }
+
+            String seleccionado = (String) JOptionPane.showInputDialog(
+                    this,
+                    "Selecciona un integrante:",
+                    "Lista de Integrantes",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    nombres,
+                    null);
+
+            if (seleccionado != null) {
+                for (int i = 0; i < nombres.length; i++) {
+                    if (nombres[i].equals(seleccionado)) {
+                        mostrarDatosNodo(nodos[i]);
+                        break;
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al mostrar los integrantes: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_VerRegistroActionPerformed
+
+    private void MostrarAntepasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarAntepasadosActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            String cadenaBusqueda = JOptionPane.showInputDialog(this, "Introduce el nombre o mote:");
+            if (cadenaBusqueda == null || cadenaBusqueda.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Buscar el nodo correspondiente al nombre o mote
+            Lista<Nodo> resultados = new Lista<>();
+            buscarPorNombreOMote(ArbolGlobal.ArbolGlobal.getRaiz(), cadenaBusqueda.trim(), resultados);
+
+            if (resultados.esVacia()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros que coincidan con la búsqueda.", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Si hay más de un resultado, pedir al usuario que seleccione
+            Nodo nodoSeleccionado;
+            if (resultados.tamaño() == 1) {
+                nodoSeleccionado = resultados.get(0);
+            } else {
+                String[] opciones = new String[resultados.tamaño()];
+                Nodo[] nodos = new Nodo[resultados.tamaño()];
+                int index = 0;
+
+                for (Nodo nodo : resultados) {
+                    opciones[index] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+                    nodos[index] = nodo;
+                    index++;
+                }
+
+                String seleccionado = (String) JOptionPane.showInputDialog(
+                        this,
+                        "Selecciona un registro:",
+                        "Resultados de la Búsqueda",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        opciones,
+                        null);
+
+                if (seleccionado == null) return;
+
+                nodoSeleccionado = null;
+                for (int i = 0; i < opciones.length; i++) {
+                    if (opciones[i].equals(seleccionado)) {
+                        nodoSeleccionado = nodos[i];
+                        break;
+                    }
+                }
+            }
+
+            // Obtener la lista de antepasados
+            Lista<Nodo> antepasados = obtenerAntepasados(nodoSeleccionado);
+
+            if (antepasados.esVacia()) {
+                JOptionPane.showMessageDialog(this, "El nodo especificado no tiene antepasados.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Mostrar la lista de antepasados en un grafo
+            Grafo grafo = new Grafo();
+            construirGrafoDeAntepasados(antepasados, grafo);
+            grafo.mostrarGrafo();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_MostrarAntepasadosActionPerformed
+    
+    private void mostrarDatosNodo(Nodo nodo) {
+    if (nodo != null) {
+        StringBuilder datos = new StringBuilder();
+
+        datos.append("Nombre: ").append(validarDato(nodo.getNombre())).append("\n");
+        datos.append("Posición: ").append(validarDato(nodo.getPosicion())).append("\n");
+        datos.append("Mote: ").append(validarDato(nodo.getMote())).append("\n");
+        datos.append("Título: ").append(validarDato(nodo.getTitulo())).append("\n");
+        datos.append("Ojos: ").append(validarDato(nodo.getOjos())).append("\n");
+        datos.append("Cabello: ").append(validarDato(nodo.getCabello())).append("\n");
+        datos.append("Nota: ").append(validarDato(nodo.getNota())).append("\n");
+        datos.append("Muerte: ").append(validarDato(nodo.getMuerte())).append("\n");
+
+        // Mostrar el padre con nombre y posición entre paréntesis
+        if (nodo.getPadre() != null) {
+            datos.append("Padre: ").append(validarDato(nodo.getPadre().getNombre()))
+                 .append(" (").append(validarDato(nodo.getPadre().getPosicion())).append(")").append("\n");
+        } else {
+            datos.append("Padre: [Sin Padre]\n");
+        }
+
+        // Mostrar los hijos con nombre y posición entre paréntesis
+        if (!nodo.getHijos().esVacia()) {
+            datos.append("Hijos: ");
+            for (Nodo hijo : nodo.getHijos()) {
+                datos.append(validarDato(hijo.getNombre())).append(" (")
+                     .append(validarDato(hijo.getPosicion())).append("), ");
+            }
+            datos.setLength(datos.length() - 2); // Eliminar la última coma y espacio
+            datos.append("\n");
+        } else {
+            datos.append("Hijos: [Sin Hijos]\n");
+        }
+
+        JOptionPane.showMessageDialog(this, datos.toString(), "Información del Nodo", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "No hay información disponible para este nodo.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+    
+    private String validarDato(String dato) {
+    return (dato == null || dato.isEmpty()) ? "[Sin datos]" : dato;
+}
+
+
+
+
+    
+    public void obtenerIntegrantes(Nodo nodo, Lista<Nodo> lista) {
+    if (nodo == null) return;
+
+    lista.agregar(nodo); // Agregar el nodo actual a la lista
+
+    for (Nodo hijo : nodo.getHijos()) {
+        obtenerIntegrantes(hijo, lista); // Recorrer los hijos recursivamente
+    }
+}
+    
+    private void buscarPorNombreOMote(Nodo nodo, String cadenaBusqueda, Lista<Nodo> resultados) {
+    if (nodo == null) return;
+
+    // Verificar si el nodo coincide con la cadena de búsqueda
+    if (nodo.getNombre().equalsIgnoreCase(cadenaBusqueda) || nodo.getMote().equalsIgnoreCase(cadenaBusqueda)) {
+        resultados.agregar(nodo);
+    }
+
+    // Recorrer los hijos del nodo actual
+    for (Nodo hijo : nodo.getHijos()) {
+        buscarPorNombreOMote(hijo, cadenaBusqueda, resultados);
+    }
+}
+    
+    private void construirArbolDeDescendencia(Nodo nodoSeleccionado) {
+    if (nodoSeleccionado == null) return;
+
+    Grafo grafo = new Grafo();
+    grafo.construirDesdeArbol(nodoSeleccionado); // Construir solo desde el nodo seleccionado
+    grafo.mostrarGrafo(); // Mostrar el grafo
+}
+    
+    private Lista<Nodo> obtenerAntepasados(Nodo nodo) {
+    Lista<Nodo> antepasados = new Lista<>();
+    Nodo actual = nodo.getPadre();
+
+    while (actual != null) {
+        antepasados.agregar(actual);
+        actual = actual.getPadre();
+    }
+
+    return antepasados;
+}
+    
+    private void construirGrafoDeAntepasados(Lista<Nodo> antepasados, Grafo grafo) {
+    Nodo anterior = null;
+
+    for (Nodo actual : antepasados) {
+        String claveActual = grafo.generarClave(actual.getNombre(), actual.getPosicion());
+
+        // Agregar nodo actual al grafo
+        if (!grafo.hasNode(claveActual)) {
+            grafo.agregarNodo(actual, anterior != null ? grafo.generarClave(anterior.getNombre(), anterior.getPosicion()) : null, actual);
+        }
+
+        anterior = actual; // Actualizar el nodo anterior
+    }
+}
 
     
     /**
@@ -158,7 +478,11 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BuscarPorNombre;
+    private javax.swing.JButton BuscarPorTitulo;
     private javax.swing.JButton CargarArchivo;
-    private javax.swing.JButton MostrarArbol;
+    private javax.swing.JButton MostrarAntepasados;
+    private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton VerRegistro;
     // End of variables declaration//GEN-END:variables
 }

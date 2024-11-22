@@ -8,7 +8,7 @@ package arbol_genealogico_andres.da.corte;
  *
  * @author dacor
  */
-public class Arbol_Genealogico_AndresDaCorte {
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -16,7 +16,11 @@ public class Arbol_Genealogico_AndresDaCorte {
     public static void main(String[] args) {
         
         Ventana menu = new Ventana();
+        
         menu.setVisible(true);
+
+       
     }
+    
     
 }
