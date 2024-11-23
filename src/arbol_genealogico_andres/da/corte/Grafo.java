@@ -11,7 +11,7 @@ package arbol_genealogico_andres.da.corte;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
-import org.graphstream.ui.view.Viewer.CloseFramePolicy;
+
 
 public class Grafo {
     private Graph grafo;
@@ -38,34 +38,6 @@ public class Grafo {
     }
 }
     
-    
-
-    private boolean agregarNodoRecursivo(Nodo actual, String clavePadre, Nodo hijo) {
-        if (actual == null) {
-            return false; // Nodo no encontrado
-        }
-
-        // Verificar si el nodo actual es el padre
-        String claveActual = generarClave(actual.getNombre(), actual.getPosicion());
-        if (claveActual.equals(clavePadre)) {
-            grafo.addNode(generarClave(hijo.getNombre(), hijo.getPosicion()))
-                .setAttribute("ui.label", hijo.getNombre());
-
-            grafo.addEdge(claveActual + "->" + generarClave(hijo.getNombre(), hijo.getPosicion()),
-                    claveActual, generarClave(hijo.getNombre(), hijo.getPosicion()), true);
-
-            return true;
-        }
-
-        // Recursión: Intentar en los hijos del nodo actual
-        for (Nodo nodoHijo : actual.getHijos()) {
-            if (agregarNodoRecursivo(nodoHijo, clavePadre, hijo)) {
-                return true; // Nodo agregado en algún hijo
-            }
-        }
-
-        return false; // Nodo no encontrado en este subárbol
-    }
     
     public void construirDesdeArbol(Nodo raiz) {
     if (raiz == null) {
@@ -170,5 +142,6 @@ private void construirDesdeArbolRecursivo(Nodo padre, Nodo hijo) {
 }
 
 }
+
 
 

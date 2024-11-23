@@ -480,7 +480,7 @@ public class Ventana extends javax.swing.JFrame {
         StringBuilder datos = new StringBuilder();
 
         datos.append("Nombre: ").append(validarDato(nodo.getNombre())).append("\n");
-        datos.append("Posición: ").append(validarDato(nodo.getPosicion())).append("\n");
+        datos.append("Con el Nombre: ").append(validarDato(nodo.getPosicion())).append("\n");
         datos.append("Mote: ").append(validarDato(nodo.getMote())).append("\n");
         datos.append("Título: ").append(validarDato(nodo.getTitulo())).append("\n");
         datos.append("Ojos: ").append(validarDato(nodo.getOjos())).append("\n");
