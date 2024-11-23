@@ -37,6 +37,7 @@ public class Ventana extends javax.swing.JFrame {
         VerRegistro = new javax.swing.JButton();
         MostrarAntepasados = new javax.swing.JButton();
         BuscarPorTitulo = new javax.swing.JButton();
+        BuscarGeneracion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,27 +77,32 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         BuscarPorTitulo.setText("Buscar por Titulo");
+        BuscarPorTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarPorTituloActionPerformed(evt);
+            }
+        });
+
+        BuscarGeneracion.setText("Buscar Generación");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CargarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MostrarGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(VerRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(MostrarAntepasados)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(BuscarPorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BuscarGeneracion, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(MostrarAntepasados, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addComponent(CargarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BuscarPorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(VerRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MostrarGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BuscarPorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,11 +115,13 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BuscarPorNombre)
                     .addComponent(VerRegistro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BuscarPorTitulo)
                     .addComponent(MostrarAntepasados))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BuscarGeneracion)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,6 +340,64 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_MostrarAntepasadosActionPerformed
+
+    private void BuscarPorTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorTituloActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            String tituloBusqueda = JOptionPane.showInputDialog(this, "Introduce el título nobiliario:");
+            if (tituloBusqueda == null || tituloBusqueda.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un título válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Buscar nodos que coincidan con el título
+            Lista<Nodo> resultados = new Lista<>();
+            buscarPorTitulo(ArbolGlobal.ArbolGlobal.getRaiz(), tituloBusqueda.trim(), resultados);
+
+            if (resultados.esVacia()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros con el título especificado.", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Construir lista de opciones para el usuario
+            String[] opciones = new String[resultados.tamaño()];
+            Nodo[] nodos = new Nodo[resultados.tamaño()];
+            int index = 0;
+
+            for (Nodo nodo : resultados) {
+                opciones[index] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+                nodos[index] = nodo;
+                index++;
+            }
+
+            // Mostrar opciones al usuario
+            String seleccionado = (String) JOptionPane.showInputDialog(
+                    this,
+                    "Selecciona un registro:",
+                    "Resultados de la Búsqueda",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    opciones,
+                    null);
+
+            if (seleccionado == null) return;
+
+            // Mostrar los datos del nodo seleccionado
+            for (int i = 0; i < opciones.length; i++) {
+                if (opciones[i].equals(seleccionado)) {
+                    Nodo nodoSeleccionado = nodos[i];
+                    mostrarDatosNodo(nodoSeleccionado);
+                    break;
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BuscarPorTituloActionPerformed
     
     private void mostrarDatosNodo(Nodo nodo) {
     if (nodo != null) {
@@ -440,6 +506,21 @@ public class Ventana extends javax.swing.JFrame {
         anterior = actual; // Actualizar el nodo anterior
     }
 }
+    
+    private void buscarPorTitulo(Nodo nodo, String tituloBusqueda, Lista<Nodo> resultados) {
+    if (nodo == null) return;
+
+    // Verificar si el título coincide
+    if (nodo.getTitulo().equalsIgnoreCase(tituloBusqueda)) {
+        resultados.agregar(nodo);
+    }
+
+    // Recorrer los hijos del nodo actual
+    for (Nodo hijo : nodo.getHijos()) {
+        buscarPorTitulo(hijo, tituloBusqueda, resultados);
+    }
+}
+
 
     
     /**
@@ -478,6 +559,7 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BuscarGeneracion;
     private javax.swing.JButton BuscarPorNombre;
     private javax.swing.JButton BuscarPorTitulo;
     private javax.swing.JButton CargarArchivo;
