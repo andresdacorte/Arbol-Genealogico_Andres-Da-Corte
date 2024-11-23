@@ -40,6 +40,8 @@ public class Ventana extends javax.swing.JFrame {
         BuscarGeneracion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CargarArchivo.setText("Cargar Archivo");
         CargarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +49,7 @@ public class Ventana extends javax.swing.JFrame {
                 CargarArchivoActionPerformed(evt);
             }
         });
+        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 275, 158, -1));
 
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +57,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarGrafoActionPerformed(evt);
             }
         });
+        getContentPane().add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 53, 180, 39));
 
         BuscarPorNombre.setText("Buscar por Nombre");
         BuscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +65,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(BuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 158, -1));
 
         VerRegistro.setText("Ver Registro");
         VerRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +73,7 @@ public class Ventana extends javax.swing.JFrame {
                 VerRegistroActionPerformed(evt);
             }
         });
+        getContentPane().add(VerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 98, 180, 39));
 
         MostrarAntepasados.setText("Mostrar Antepasados");
         MostrarAntepasados.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +81,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarAntepasadosActionPerformed(evt);
             }
         });
+        getContentPane().add(MostrarAntepasados, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 234, 158, -1));
 
         BuscarPorTitulo.setText("Buscar por Titulo");
         BuscarPorTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -82,47 +89,15 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorTituloActionPerformed(evt);
             }
         });
+        getContentPane().add(BuscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 40));
 
         BuscarGeneracion.setText("Buscar Generación");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BuscarGeneracion, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(MostrarAntepasados, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                        .addComponent(CargarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BuscarPorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(VerRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(MostrarGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BuscarPorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CargarArchivo)
-                    .addComponent(MostrarGrafo))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BuscarPorNombre)
-                    .addComponent(VerRegistro))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BuscarPorTitulo)
-                    .addComponent(MostrarAntepasados))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarGeneracion)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
+        BuscarGeneracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarGeneracionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BuscarGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 234, 158, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -398,6 +373,59 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_BuscarPorTituloActionPerformed
+
+    private void BuscarGeneracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarGeneracionActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            // Obtener el número máximo de generaciones en el árbol
+            int maxGeneracion = obtenerMaxGeneracion(ArbolGlobal.ArbolGlobal.getRaiz(), 0);
+
+            // Crear opciones de generación para el usuario
+            String[] generaciones = new String[maxGeneracion + 1];
+            for (int i = 0; i <= maxGeneracion; i++) {
+                generaciones[i] = "Generación " + i;
+            }
+
+            // Mostrar opciones al usuario
+            String seleccion = (String) JOptionPane.showInputDialog(
+                    this,
+                    "Selecciona una generación:",
+                    "Lista de Generaciones",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    generaciones,
+                    null);
+
+            if (seleccion == null) return;
+
+            // Obtener el número de la generación seleccionada
+            int numeroGeneracion = Integer.parseInt(seleccion.replace("Generación ", "").trim());
+
+            // Obtener los integrantes de la generación seleccionada
+            Lista<Nodo> integrantes = new Lista<>();
+            obtenerIntegrantesDeGeneracion(ArbolGlobal.ArbolGlobal.getRaiz(), numeroGeneracion, 0, integrantes);
+
+            if (integrantes.esVacia()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron integrantes en la generación seleccionada.", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            // Mostrar los integrantes al usuario
+            StringBuilder listaIntegrantes = new StringBuilder("Integrantes de la generación " + numeroGeneracion + ":\n");
+            for (Nodo nodo : integrantes) {
+                listaIntegrantes.append(nodo.getNombre()).append(" (").append(nodo.getPosicion()).append(")\n");
+            }
+
+            JOptionPane.showMessageDialog(this, listaIntegrantes.toString(), "Integrantes de la Generación", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BuscarGeneracionActionPerformed
     
     private void mostrarDatosNodo(Nodo nodo) {
     if (nodo != null) {
@@ -520,6 +548,31 @@ public class Ventana extends javax.swing.JFrame {
         buscarPorTitulo(hijo, tituloBusqueda, resultados);
     }
 }
+    
+    private int obtenerMaxGeneracion(Nodo nodo, int nivel) {
+    if (nodo == null) return nivel - 1;
+
+    int maxNivel = nivel;
+    for (Nodo hijo : nodo.getHijos()) {
+        maxNivel = Math.max(maxNivel, obtenerMaxGeneracion(hijo, nivel + 1));
+    }
+
+    return maxNivel;
+}
+    
+    private void obtenerIntegrantesDeGeneracion(Nodo nodo, int generacionObjetivo, int nivelActual, Lista<Nodo> resultados) {
+    if (nodo == null) return;
+
+    if (nivelActual == generacionObjetivo) {
+        resultados.agregar(nodo);
+    }
+
+    for (Nodo hijo : nodo.getHijos()) {
+        obtenerIntegrantesDeGeneracion(hijo, generacionObjetivo, nivelActual + 1, resultados);
+    }
+}
+
+
 
 
     

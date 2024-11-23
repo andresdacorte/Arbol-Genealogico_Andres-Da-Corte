@@ -15,8 +15,9 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Ventana menu = new Ventana();
+        Inicio menu = new Inicio();
         
+        menu.setLocationRelativeTo(null);
         menu.setVisible(true);
 
        
