@@ -38,6 +38,11 @@ public class Ventana extends javax.swing.JFrame {
         MostrarAntepasados = new javax.swing.JButton();
         BuscarPorTitulo = new javax.swing.JButton();
         BuscarGeneracion = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -49,7 +54,7 @@ public class Ventana extends javax.swing.JFrame {
                 CargarArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 275, 158, -1));
+        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 200, 40));
 
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +62,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarGrafoActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 53, 180, 39));
+        getContentPane().add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 200, 39));
 
         BuscarPorNombre.setText("Buscar por Nombre");
         BuscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +70,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 158, -1));
+        getContentPane().add(BuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 200, 40));
 
         VerRegistro.setText("Ver Registro");
         VerRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +78,7 @@ public class Ventana extends javax.swing.JFrame {
                 VerRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(VerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 98, 180, 39));
+        getContentPane().add(VerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 200, 39));
 
         MostrarAntepasados.setText("Mostrar Antepasados");
         MostrarAntepasados.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +86,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarAntepasadosActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarAntepasados, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 234, 158, -1));
+        getContentPane().add(MostrarAntepasados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 200, 40));
 
         BuscarPorTitulo.setText("Buscar por Titulo");
         BuscarPorTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -89,15 +94,47 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorTituloActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 40));
+        getContentPane().add(BuscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 200, 40));
 
-        BuscarGeneracion.setText("Buscar Generación");
+        BuscarGeneracion.setText("Buscar por Generación");
         BuscarGeneracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarGeneracionActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 234, 158, -1));
+        getContentPane().add(BuscarGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 240, 40));
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 80, 30));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 80, 30));
+
+        jLabel1.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MENU");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("\" Winter is coming \"");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dacor\\Downloads\\GOT menu3.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -426,6 +463,17 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_BuscarGeneracionActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        Inicio inicio = new Inicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
     
     private void mostrarDatosNodo(Nodo nodo) {
     if (nodo != null) {
@@ -618,6 +666,11 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton CargarArchivo;
     private javax.swing.JButton MostrarAntepasados;
     private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton Salir;
     private javax.swing.JButton VerRegistro;
+    private javax.swing.JButton Volver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
