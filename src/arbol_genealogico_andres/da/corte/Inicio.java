@@ -76,7 +76,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel5.setText("E.D.D. Sección 3");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dacor\\Downloads\\GOT Inicio.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arbol_genealogico_andres/da/corte/Imagenes/GOT Inicio.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -50, -1, 390));
 

@@ -132,7 +132,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dacor\\Downloads\\GOT menu3.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arbol_genealogico_andres/da/corte/Imagenes/GOT menu3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
