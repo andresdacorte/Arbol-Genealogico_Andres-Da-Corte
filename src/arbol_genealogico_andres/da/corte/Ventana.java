@@ -40,6 +40,12 @@ public class Ventana extends javax.swing.JFrame {
         BuscarGeneracion = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         Volver = new javax.swing.JButton();
+        MostrarDetalles = new javax.swing.JButton();
+        AgregarPersona = new javax.swing.JButton();
+        QuitarPersona = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -54,7 +60,7 @@ public class Ventana extends javax.swing.JFrame {
                 CargarArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 200, 40));
+        getContentPane().add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 200, 40));
 
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +68,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarGrafoActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 200, 39));
+        getContentPane().add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 200, 39));
 
         BuscarPorNombre.setText("Buscar por Nombre");
         BuscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +76,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 200, 40));
+        getContentPane().add(BuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 200, 40));
 
         VerRegistro.setText("Ver Registro");
         VerRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +84,7 @@ public class Ventana extends javax.swing.JFrame {
                 VerRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(VerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 200, 39));
+        getContentPane().add(VerRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 200, 39));
 
         MostrarAntepasados.setText("Mostrar Antepasados");
         MostrarAntepasados.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +92,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarAntepasadosActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarAntepasados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 200, 40));
+        getContentPane().add(MostrarAntepasados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 200, 40));
 
         BuscarPorTitulo.setText("Buscar por Titulo");
         BuscarPorTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +100,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarPorTituloActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 200, 40));
+        getContentPane().add(BuscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 200, 40));
 
         BuscarGeneracion.setText("Buscar por Generación");
         BuscarGeneracion.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +108,7 @@ public class Ventana extends javax.swing.JFrame {
                 BuscarGeneracionActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 240, 40));
+        getContentPane().add(BuscarGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 200, 40));
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +116,7 @@ public class Ventana extends javax.swing.JFrame {
                 SalirActionPerformed(evt);
             }
         });
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 80, 30));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 80, 30));
 
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -118,17 +124,56 @@ public class Ventana extends javax.swing.JFrame {
                 VolverActionPerformed(evt);
             }
         });
-        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 80, 30));
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 80, 30));
+
+        MostrarDetalles.setText("Detalles del Arbol");
+        MostrarDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarDetallesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MostrarDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 200, 40));
+
+        AgregarPersona.setText("Agregar una Persona");
+        AgregarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarPersonaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AgregarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 200, 40));
+
+        QuitarPersona.setText("Quitar una Persona");
+        QuitarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitarPersonaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(QuitarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 200, 40));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("(Adicional)");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("(Adicional)");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("(Adicional)");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MENU");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("\" Winter is coming \"");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Serif", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,7 +326,7 @@ public class Ventana extends javax.swing.JFrame {
     private void MostrarAntepasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarAntepasadosActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
-            String cadenaBusqueda = JOptionPane.showInputDialog(this, "Introduce el nombre o mote:");
+            String cadenaBusqueda = JOptionPane.showInputDialog(this, "Introduce el nombre y apellido o mote de la persona:");
             if (cadenaBusqueda == null || cadenaBusqueda.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un valor para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
@@ -474,6 +519,37 @@ public class Ventana extends javax.swing.JFrame {
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void MostrarDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDetallesActionPerformed
+        try {
+        if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
+            mostrarEstadisticas();
+        } else {
+            JOptionPane.showMessageDialog(this, "El árbol global no ha sido cargado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al calcular estadísticas: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_MostrarDetallesActionPerformed
+
+    private void AgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPersonaActionPerformed
+        try {
+        agregarNodoInteractivo();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al agregar nodo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_AgregarPersonaActionPerformed
+
+    private void QuitarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarPersonaActionPerformed
+        try {
+        quitarNodoInteractivo();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al quitar nodo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_QuitarPersonaActionPerformed
     
     private void mostrarDatosNodo(Nodo nodo) {
     if (nodo != null) {
@@ -619,11 +695,283 @@ public class Ventana extends javax.swing.JFrame {
         obtenerIntegrantesDeGeneracion(hijo, generacionObjetivo, nivelActual + 1, resultados);
     }
 }
-
-
-
-
     
+    private void mostrarEstadisticas() {
+    Nodo raiz = ArbolGlobal.ArbolGlobal.getRaiz();
+    if (raiz == null) {
+        JOptionPane.showMessageDialog(this, "El árbol está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Calcular estadísticas
+    int totalPersonas = contarNodos(raiz);
+    int totalHijos = contarHijos(raiz);
+    int profundidad = calcularProfundidad(raiz);
+    Nodo masLongevo = encontrarMasLongevo(raiz);
+    int titulosUnicos = contarTitulosUnicos(raiz);
+
+    // Mostrar estadísticas
+    StringBuilder estadisticas = new StringBuilder();
+    estadisticas.append("Estadísticas del Árbol Genealógico:\n");
+    estadisticas.append("Número total de personas: ").append(totalPersonas).append("\n");
+    estadisticas.append("Promedio de hijos por persona: ").append((double) totalHijos / totalPersonas).append("\n");
+    estadisticas.append("Generación más larga: ").append(profundidad).append("\n");
+    estadisticas.append("Ultimo descendiente: ").append(masLongevo != null ? masLongevo.getNombre() + " (" + masLongevo.getMuerte() + ")" : "[Sin datos]").append("\n");
+    estadisticas.append("Número de títulos únicos: ").append(titulosUnicos).append("\n");
+
+    JOptionPane.showMessageDialog(this, estadisticas.toString(), "Estadísticas del Árbol", JOptionPane.INFORMATION_MESSAGE);
+}
+    private int contarNodos(Nodo nodo) {
+    if (nodo == null) return 0;
+
+    int contador = 1; // Contar el nodo actual
+    for (Nodo hijo : nodo.getHijos()) {
+        contador += contarNodos(hijo);
+    }
+    return contador;
+}
+    private int contarHijos(Nodo nodo) {
+    if (nodo == null) return 0;
+
+    int contador = nodo.getHijos().tamaño(); // Contar los hijos del nodo actual
+    for (Nodo hijo : nodo.getHijos()) {
+        contador += contarHijos(hijo);
+    }
+    return contador;
+}
+    private int calcularProfundidad(Nodo nodo) {
+    if (nodo == null || nodo.getHijos().esVacia()) return 1;
+
+    int maxProfundidad = 0;
+    for (Nodo hijo : nodo.getHijos()) {
+        maxProfundidad = Math.max(maxProfundidad, calcularProfundidad(hijo));
+    }
+    return 1 + maxProfundidad;
+}
+    private Nodo encontrarMasLongevo(Nodo nodo) {
+    if (nodo == null) return null;
+
+    Nodo masLongevo = nodo;
+    for (Nodo hijo : nodo.getHijos()) {
+        Nodo posibleLongevo = encontrarMasLongevo(hijo);
+        if (posibleLongevo != null && !posibleLongevo.getMuerte().isEmpty() &&
+                (masLongevo.getMuerte().isEmpty() || posibleLongevo.getMuerte().compareTo(masLongevo.getMuerte()) > 0)) {
+            masLongevo = posibleLongevo;
+        }
+    }
+    return masLongevo;
+}
+    private int contarTitulosUnicos(Nodo nodo) {
+    if (nodo == null) return 0;
+
+    HashTable<String, Boolean> titulos = new HashTable<>(100);
+    contarTitulosRecursivo(nodo, titulos);
+    return titulos.size();
+}
+
+private void contarTitulosRecursivo(Nodo nodo, HashTable<String, Boolean> titulos) {
+    if (nodo == null) return;
+
+    if (!nodo.getTitulo().isEmpty()) {
+        titulos.put(nodo.getTitulo(), true);
+    }
+    for (Nodo hijo : nodo.getHijos()) {
+        contarTitulosRecursivo(hijo, titulos);
+    }
+}
+
+private void agregarNodoInteractivo() {
+    if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
+        JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Solicitar el nodo padre
+    String nombrePadre = JOptionPane.showInputDialog(this, "Nombre y apellido o mote del nodo padre:");
+    if (nombrePadre == null || nombrePadre.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debes especificar un nodo padre válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Buscar todos los nodos que coincidan
+    Lista<Nodo> resultadosPadre = new Lista<>();
+    buscarPorNombreOMote(ArbolGlobal.ArbolGlobal.getRaiz(), nombrePadre.trim(), resultadosPadre);
+
+    if (resultadosPadre.esVacia()) {
+        JOptionPane.showMessageDialog(this, "No se encontró un nodo padre con el nombre/mote especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Si hay más de un resultado, mostrar una lista para seleccionar
+    Nodo padre = null;
+    if (resultadosPadre.tamaño() > 1) {
+        String[] opciones = new String[resultadosPadre.tamaño()];
+        for (int i = 0; i < resultadosPadre.tamaño(); i++) {
+            Nodo nodo = resultadosPadre.obtener(i);
+            opciones[i] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+        }
+
+        String seleccion = (String) JOptionPane.showInputDialog(
+            this,
+            "Seleccione el nodo padre:",
+            "Selección de Nodo",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
+
+        if (seleccion == null) {
+            JOptionPane.showMessageDialog(this, "Operación cancelada.", "Cancelación", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        for (Nodo nodo : resultadosPadre) {
+            if (seleccion.equals(nodo.getNombre() + " (" + nodo.getPosicion() + ")")) {
+                padre = nodo;
+                break;
+            }
+        }
+    } else {
+        padre = resultadosPadre.obtener(0);
+    }
+
+    // Solicitar el nombre del nuevo nodo
+    String nombreNodo = JOptionPane.showInputDialog(this, "Nombre del nuevo nodo:");
+    if (nombreNodo == null || nombreNodo.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre del nodo no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Determinar la posición automáticamente
+    Lista<Nodo> resultadosNombre = new Lista<>();
+    buscarPorNombreOMote(ArbolGlobal.ArbolGlobal.getRaiz(), nombreNodo.trim(), resultadosNombre);
+    String posicion = "First";
+    int cantidadExistente = resultadosNombre.tamaño() + 1;
+
+    if (cantidadExistente == 2) {
+        posicion = "Second";
+    } else if (cantidadExistente == 3) {
+        posicion = "Third";
+    } else if (cantidadExistente > 3) {
+        posicion = cantidadExistente + "th";
+    }
+
+    // Solicitar otros datos del nodo
+    JTextField txtMote = new JTextField();
+    JTextField txtTitulo = new JTextField();
+    JTextField txtOjos = new JTextField();
+    JTextField txtCabello = new JTextField();
+    JTextField txtNota = new JTextField();
+    JTextField txtMuerte = new JTextField();
+
+    Object[] mensaje = {
+        "Mote:", txtMote,
+        "Título:", txtTitulo,
+        "Ojos:", txtOjos,
+        "Cabello:", txtCabello,
+        "Nota:", txtNota,
+        "Muerte:", txtMuerte,
+    };
+
+    int opcion = JOptionPane.showConfirmDialog(null, mensaje, "Agregar Nodo", JOptionPane.OK_CANCEL_OPTION);
+    if (opcion == JOptionPane.OK_OPTION) {
+        // Crear y agregar el nodo
+        Nodo nuevoNodo = new Nodo(
+            "", // Valor
+            nombreNodo.trim(),
+            posicion,
+            txtMote.getText(),
+            txtTitulo.getText(),
+            txtOjos.getText(),
+            txtCabello.getText(),
+            padre, // Padre
+            new Lista<>(), // Hijos
+            txtNota.getText(),
+            txtMuerte.getText()
+        );
+
+        padre.agregarHijo(nuevoNodo);
+        JOptionPane.showMessageDialog(this, "Nodo agregado correctamente y es con el nombre: " + posicion);
+    }
+}
+
+
+
+
+
+private void quitarNodoInteractivo() {
+    if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
+        JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Solicitar el nombre del nodo a eliminar
+    String nombreNodo = JOptionPane.showInputDialog(this, "Nombre y apellido o mote de la persona a eliminar:");
+    if (nombreNodo == null || nombreNodo.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debes especificar un nodo válido para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Buscar todos los nodos que coincidan
+    Lista<Nodo> resultados = new Lista<>();
+    buscarPorNombreOMote(ArbolGlobal.ArbolGlobal.getRaiz(), nombreNodo.trim(), resultados);
+
+    if (resultados.esVacia()) {
+        JOptionPane.showMessageDialog(this, "No se encontró un nodo con el nombre/mote especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Si hay más de un resultado, mostrar una lista para seleccionar
+    Nodo nodoAEliminar = null;
+    if (resultados.tamaño() > 1) {
+        String[] opciones = new String[resultados.tamaño()];
+        for (int i = 0; i < resultados.tamaño(); i++) {
+            Nodo nodo = resultados.obtener(i);
+            opciones[i] = nodo.getNombre() + " (" + nodo.getPosicion() + ")";
+        }
+
+        String seleccion = (String) JOptionPane.showInputDialog(
+            this,
+            "Seleccione el nodo a eliminar:",
+            "Selección de Nodo",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
+
+        if (seleccion == null) {
+            JOptionPane.showMessageDialog(this, "Operación cancelada.", "Cancelación", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Encontrar el nodo seleccionado
+        for (Nodo nodo : resultados) {
+            if (seleccion.equals(nodo.getNombre() + " (" + nodo.getPosicion() + ")")) {
+                nodoAEliminar = nodo;
+                break;
+            }
+        }
+    } else {
+        nodoAEliminar = resultados.obtener(0);
+    }
+
+    // Verificar si es la raíz
+    if (nodoAEliminar == ArbolGlobal.ArbolGlobal.getRaiz()) {
+        JOptionPane.showMessageDialog(this, "No puedes eliminar la raíz del árbol directamente.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Eliminar el nodo del padre
+    Nodo padre = nodoAEliminar.getPadre();
+    if (padre != null && padre.eliminarHijo(nodoAEliminar)) {
+        JOptionPane.showMessageDialog(this, "Nodo eliminado correctamente.");
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo eliminar el nodo.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     /**
      * @param args the command line arguments
      */
@@ -660,17 +1008,23 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarPersona;
     private javax.swing.JButton BuscarGeneracion;
     private javax.swing.JButton BuscarPorNombre;
     private javax.swing.JButton BuscarPorTitulo;
     private javax.swing.JButton CargarArchivo;
     private javax.swing.JButton MostrarAntepasados;
+    private javax.swing.JButton MostrarDetalles;
     private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton QuitarPersona;
     private javax.swing.JButton Salir;
     private javax.swing.JButton VerRegistro;
     private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

@@ -87,7 +87,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         Ventana selector = new Ventana();
-        selector.setSize(700, 500);
+        selector.setSize(700, 520);
         selector.setLocationRelativeTo(null);
         selector.setVisible(true);
         this.dispose();
