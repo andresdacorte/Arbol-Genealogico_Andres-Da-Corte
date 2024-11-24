@@ -5,14 +5,19 @@
 package arbol_genealogico_andres.da.corte;
 
 /**
- *
- * @author dacor
+ * Clase principal `Inicio` que representa la ventana inicial del programa.
+ * Permite al usuario continuar al menú principal o salir del programa.
+ * 
+ * @author Andres Da Corte
+ * @since 2024-11-24
  */
+
 public class Inicio extends javax.swing.JFrame {
 
     /**
-     * Creates new form Menu
+     * Constructor de la clase `Inicio`. Inicializa los componentes de la interfaz gráfica.
      */
+    
     public Inicio() {
         initComponents();
     }
@@ -84,7 +89,14 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Método llamado al presionar el botón "Continuar". 
+     * Abre la ventana principal del programa y cierra la ventana actual.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         Ventana selector = new Ventana();
         selector.setSize(700, 520);
@@ -92,7 +104,14 @@ public class Inicio extends javax.swing.JFrame {
         selector.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ContinuarActionPerformed
-
+    
+    /**
+     * Método llamado al presionar el botón "Salir".
+     * Cierra el programa.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed

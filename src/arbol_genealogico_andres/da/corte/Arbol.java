@@ -4,22 +4,47 @@
  */
 package arbol_genealogico_andres.da.corte;
 
-/**
- *
- * @author dacor
- */
-
 import com.google.gson.*;
 import java.io.*;
+
+/**
+ * Clase de tipo Arbol utilizada como la estructura principal para representar un árbol genealógico.
+ * Administra nodos y relaciones jerárquicas, con soporte para operaciones de agregar, eliminar, buscar,
+ * y cargar desde un archivo JSON.
+ * 
+ * @author Andres Da Corte
+ * @since 2024-11-24
+ */
 
 public class Arbol {
     public Nodo raiz;
     private HashTable<String, Nodo> nodos;
-
+    
+    /**
+     * Constructor de la clase.
+     * Inicializa el árbol con una tabla hash de capacidad inicial fija.
+     */
+    
     public Arbol() {
         this.raiz = null;
         this.nodos = new HashTable<>(50); // Tamaño inicial de la tabla hash
     }
+    
+     /**
+     * Agrega la raíz del árbol.
+     * Verifica si ya existe una raíz y, si no, agrega una nueva raíz con clave generada a partir del nombre y la posición.
+     *
+     * @param valor Clave única del nodo raíz.
+     * @param nombre Nombre del nodo raíz.
+     * @param posicion Posición o numeral del nodo raíz.
+     * @param mote Mote del nodo raíz.
+     * @param titulo Título nobiliario del nodo raíz.
+     * @param ojos Color de ojos del nodo raíz.
+     * @param cabello Color de cabello del nodo raíz.
+     * @param nota Nota asociada al nodo raíz.
+     * @param muerte Fecha o causa de muerte del nodo raíz.
+     * @throws IllegalStateException Si ya existe una raíz en el árbol.
+     */
 
     public void agregarRaiz(String valor, String nombre, String posicion, String mote, String titulo, String ojos, String cabello, String nota, String muerte) {
         if (raiz == null) {
@@ -30,6 +55,23 @@ public class Arbol {
             throw new IllegalStateException("El árbol ya tiene una raíz.");
         }
     }
+    
+    /**
+     * Agrega un nodo hijo a un nodo padre existente en el árbol.
+     *
+     * @param nombrePadre Nombre del nodo padre.
+     * @param posicionPadre Posición del nodo padre.
+     * @param valor Clave única del nodo hijo.
+     * @param nombre Nombre del nodo hijo.
+     * @param posicion Posición o numeral del nodo hijo.
+     * @param mote Mote del nodo hijo.
+     * @param titulo Título nobiliario del nodo hijo.
+     * @param ojos Color de ojos del nodo hijo.
+     * @param cabello Color de cabello del nodo hijo.
+     * @param nota Nota asociada al nodo hijo.
+     * @param muerte Fecha o causa de muerte del nodo hijo.
+     * @throws IllegalArgumentException Si el nodo padre no existe o ya existe un nodo con la misma clave.
+     */
 
     public void agregarNodo(String nombrePadre, String posicionPadre, String valor, String nombre, String posicion, String mote, String titulo, String ojos, String cabello, String nota, String muerte) {
         String clavePadre = generarClave(nombrePadre, posicionPadre);
@@ -47,11 +89,28 @@ public class Arbol {
         padre.agregarHijo(nuevoNodo);
         nodos.put(clave, nuevoNodo);
     }
+    
+    /**
+     * Busca un nodo específico en el árbol utilizando su clave única.
+     *
+     * @param nombre Nombre del nodo a buscar.
+     * @param posicion Posición del nodo a buscar.
+     * @return El nodo encontrado, o {@code null} si no existe.
+     */
 
     public Nodo buscarNodo(String nombre, String posicion) {
         String clave = generarClave(nombre, posicion);
         return nodos.get(clave);
     }
+    
+    /**
+     * Elimina un nodo específico del árbol.
+     * Si el nodo tiene descendientes, estos también se eliminan.
+     *
+     * @param nombre Nombre del nodo a eliminar.
+     * @param posicion Posición del nodo a eliminar.
+     * @throws IllegalArgumentException Si el nodo no existe.
+     */
 
     public void eliminarNodo(String nombre, String posicion) {
         String clave = generarClave(nombre, posicion);
@@ -68,6 +127,12 @@ public class Arbol {
         // Eliminar el nodo y sus descendientes de la tabla hash
         eliminarRecursivo(nodo);
     }
+    
+    /**
+     * Elimina un nodo y todos sus descendientes del árbol.
+     *
+     * @param nodo Nodo a eliminar.
+     */
 
     private void eliminarRecursivo(Nodo nodo) {
         Lista<Nodo> hijos = nodo.getHijos();
@@ -78,6 +143,10 @@ public class Arbol {
         String clave = generarClave(nodo.getNombre(), nodo.getPosicion());
         nodos.remove(clave);
     }
+    
+    /**
+     * Imprime el árbol en la consola, mostrando su jerarquía (solo como confirmacion).
+     */
 
     public void imprimirArbol() {
         imprimirRecursivo(raiz, 0);
@@ -96,7 +165,15 @@ public class Arbol {
     for (Nodo nodoHijo : actual.getHijos()) {
         imprimirRecursivo(nodoHijo, nivel + 1); // Aumentar el nivel para los hijos
     }
-}
+    }
+    
+    /**
+     * Carga un árbol desde un archivo JSON.
+     * Extrae datos de genealogías y los almacena en la estructura del árbol.
+     *
+     * @param archivoJSON Ruta del archivo JSON.
+     * @throws RuntimeException Si ocurre un error durante la carga.
+     */
 
     
     public void cargarDesdeJSON(String archivoJSON) {
@@ -196,48 +273,77 @@ public class Arbol {
         e.printStackTrace();
         throw new RuntimeException("Error al cargar el archivo JSON: " + e.getMessage());
     }
-}
+    }
+    
+    /**
+     * Método auxiliar para extraer un atributo de un nodo en formato JSON.
+     *
+     * @param atributos Lista de atributos del nodo en formato JSON.
+     * @param clave Clave del atributo a extraer.
+     * @return El valor del atributo como cadena, o una cadena vacía si no existe.
+     */
 
-private String obtenerAtributo(JsonArray atributos, String clave) {
-    for (JsonElement atributo : atributos) {
-        JsonObject obj = atributo.getAsJsonObject();
-        if (obj.has(clave)) {
-            return obj.get(clave).getAsString();
+    private String obtenerAtributo(JsonArray atributos, String clave) {
+        for (JsonElement atributo : atributos) {
+            JsonObject obj = atributo.getAsJsonObject();
+            if (obj.has(clave)) {
+                return obj.get(clave).getAsString();
+            }
         }
+        return ""; // Si no existe el atributo, devolver una cadena vacía
     }
-    return ""; // Si no existe el atributo, devolver una cadena vacía
-}
+    
+    /**
+     * Genera una clave única combinando el nombre y la posición de un nodo.
+     *
+     * @param nombre Nombre del nodo.
+     * @param posicion Posición del nodo.
+     * @return Clave única generada.
+     * @throws IllegalArgumentException Si el nombre o la posición son inválidos.
+     */
 
-
-
-private String generarClave(String nombre, String posicion) {
-    if (nombre == null || posicion == null || nombre.isEmpty() || posicion.isEmpty()) {
-        throw new IllegalArgumentException("Nombre o posición inválidos para generar clave.");
+    private String generarClave(String nombre, String posicion) {
+        if (nombre == null || posicion == null || nombre.isEmpty() || posicion.isEmpty()) {
+            throw new IllegalArgumentException("Nombre o posición inválidos para generar clave.");
+        }
+        return nombre.trim() + "-" + posicion.trim(); // Combina nombre y posición como clave única
     }
-    return nombre.trim() + "-" + posicion.trim(); // Combina nombre y posición como clave única
-}
 
-public void limpiarArbol() {
+    /**
+     * Limpia todo el árbol, incluyendo la raíz y el mapa de nodos.
+     */
+
+    public void limpiarArbol() {
         this.raiz = null; // Reiniciar la raíz
         this.nodos.limpiar(); // Limpiar el mapa de nodos
         System.out.println("El árbol y el grafo han sido limpiados.");
     }
 
-public void obtenerIntegrantes(Nodo nodo, Lista<Nodo> lista) {
-    if (nodo == null) return;
+    /**
+     * Obtiene todos los nodos integrantes de un árbol, incluyendo descendientes.
+     *
+     * @param nodo Nodo inicial.
+     * @param lista Lista donde se almacenarán los nodos.
+     */
 
-    lista.agregar(nodo); // Agregar el nodo actual a la lista
+    public void obtenerIntegrantes(Nodo nodo, Lista<Nodo> lista) {
+        if (nodo == null) return;
 
-    for (Nodo hijo : nodo.getHijos()) {
+        lista.agregar(nodo); // Agregar el nodo actual a la lista
+
+        for (Nodo hijo : nodo.getHijos()) {
         obtenerIntegrantes(hijo, lista); // Recorrer los hijos recursivamente
+        }
     }
-}
 
+    /**
+     * Devuelve la raíz del árbol.
+     *
+     * @return Nodo raíz del árbol.
+     */
 
-public Nodo getRaiz() {
-    return raiz; // Devuelve la raíz del árbol
-}
+    public Nodo getRaiz() {
+        return raiz; // Devuelve la raíz del árbol
+    }
 
-
-
-}
+    }

@@ -5,19 +5,23 @@
 package arbol_genealogico_andres.da.corte;
 
 /**
- *
- * @author dacor
+ * Clase Ventana que implementa la interfaz gráfica principal del programa.
+ * Permite al usuario interactuar con el árbol genealógico mediante diversas opciones
+ * como cargar archivos, buscar nodos, mostrar grafo, entre otras.
+ * 
+ * @author Andres Da Corte
+ * @since 2024-11-24
  */
-
 import javax.swing.*;
-import java.awt.event.*;
 import java.io.File;
 
 public class Ventana extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana
+     * Constructor de la clase Ventana.
+     * Inicializa los componentes de la interfaz gráfica.
      */
+    
     public Ventana() {
         initComponents();
     }
@@ -51,7 +55,6 @@ public class Ventana extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CargarArchivo.setText("Cargar Archivo");
@@ -183,7 +186,15 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Método asociado al botón "Cargar Archivo".
+     * Permite al usuario seleccionar un archivo JSON y cargar la información
+     * en el árbol genealógico.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
                 fileChooser.setDialogTitle("Seleccionar archivo JSON");
@@ -206,7 +217,14 @@ public class Ventana extends javax.swing.JFrame {
                     }
                 }
     }//GEN-LAST:event_CargarArchivoActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Mostrar Grafo".
+     * Muestra gráficamente el árbol genealógico cargado.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -221,7 +239,15 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al mostrar el grafo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_MostrarGrafoActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Buscar por Nombre".
+     * Permite buscar nodos en el árbol genealógico por nombre o mote,
+     * y muestra gráficamente el árbol de descendencia del nodo seleccionado.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void BuscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorNombreActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -278,7 +304,15 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_BuscarPorNombreActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Ver Registro".
+     * Permite al usuario seleccionar un integrante del árbol y visualizar
+     * sus datos completos en un cuadro de diálogo.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void VerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerRegistroActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -322,7 +356,14 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al mostrar los integrantes: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_VerRegistroActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Mostrar Antepasados".
+     * Muestra gráficamente los antepasados de un nodo específico del árbol.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void MostrarAntepasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarAntepasadosActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -397,7 +438,14 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_MostrarAntepasadosActionPerformed
-
+    
+     /**
+     * Método asociado al botón "Buscar por Título".
+     * Busca todos los nodos con un título específico y muestra los detalles del nodo seleccionado.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void BuscarPorTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorTituloActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -455,7 +503,15 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_BuscarPorTituloActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Buscar por Generación".
+     * Permite al usuario seleccionar una generación específica y muestra
+     * los integrantes de dicha generación.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void BuscarGeneracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarGeneracionActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -508,18 +564,39 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_BuscarGeneracionActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Volver".
+     * Vuelve al menú principal de la aplicación.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         Inicio inicio = new Inicio();
         inicio.setLocationRelativeTo(null);
         inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VolverActionPerformed
-
+    
+     /**
+     * Método asociado al botón "Salir".
+     * Cierra la aplicación.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Detalles del Árbol".
+     * Muestra estadísticas detalladas del árbol genealógico.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void MostrarDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDetallesActionPerformed
         try {
         if (ArbolGlobal.ArbolGlobal != null && ArbolGlobal.ArbolGlobal.getRaiz() != null) {
@@ -532,7 +609,14 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al calcular estadísticas: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_MostrarDetallesActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Agregar una Persona".
+     * Permite agregar un nuevo nodo al árbol genealógico de forma interactiva.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void AgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPersonaActionPerformed
         try {
         agregarNodoInteractivo();
@@ -541,7 +625,14 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al agregar nodo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_AgregarPersonaActionPerformed
-
+    
+    /**
+     * Método asociado al botón "Quitar una Persona".
+     * Permite eliminar un nodo del árbol genealógico de forma interactiva.
+     * 
+     * @param evt Evento de acción generado al presionar el botón.
+     */
+    
     private void QuitarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarPersonaActionPerformed
         try {
         quitarNodoInteractivo();
@@ -550,6 +641,12 @@ public class Ventana extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error al quitar nodo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_QuitarPersonaActionPerformed
+    
+    /**
+     * Método para mostrar los datos de un nodo en un cuadro de diálogo.
+     * 
+     * @param nodo Nodo del que se desea mostrar la información.
+     */
     
     private void mostrarDatosNodo(Nodo nodo) {
     if (nodo != null) {
@@ -589,16 +686,27 @@ public class Ventana extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "No hay información disponible para este nodo.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
-
+    }
+    
+    /**
+     * Método auxiliar para validar y mostrar datos de un nodo.
+     * Si el dato está vacío o nulo, retorna "[Sin datos]".
+     * 
+     * @param dato Dato a validar.
+     * @return Dato validado o "[Sin datos]" si está vacío/nulo.
+     */
     
     private String validarDato(String dato) {
     return (dato == null || dato.isEmpty()) ? "[Sin datos]" : dato;
-}
-
-
-
-
+    }
+    
+    /**
+    * Método para obtener todos los integrantes de un árbol genealógico.
+    * Agrega recursivamente cada nodo y sus descendientes a una lista.
+    * 
+    * @param nodo Nodo actual desde donde se inicia la búsqueda.
+     * @param lista Lista donde se almacenarán los nodos encontrados.
+    */
     
     public void obtenerIntegrantes(Nodo nodo, Lista<Nodo> lista) {
     if (nodo == null) return;
@@ -608,7 +716,16 @@ public class Ventana extends javax.swing.JFrame {
     for (Nodo hijo : nodo.getHijos()) {
         obtenerIntegrantes(hijo, lista); // Recorrer los hijos recursivamente
     }
-}
+    }
+    
+    /**
+    * Método para buscar nodos en el árbol genealógico por nombre o mote.
+    * Los nodos que coincidan con la cadena de búsqueda se agregan a la lista de resultados.
+    * 
+    * @param nodo Nodo actual desde donde se inicia la búsqueda.
+    * @param cadenaBusqueda Cadena con el nombre o mote a buscar.
+    * @param resultados Lista donde se almacenarán los nodos encontrados.
+    */
     
     private void buscarPorNombreOMote(Nodo nodo, String cadenaBusqueda, Lista<Nodo> resultados) {
     if (nodo == null) return;
@@ -622,7 +739,13 @@ public class Ventana extends javax.swing.JFrame {
     for (Nodo hijo : nodo.getHijos()) {
         buscarPorNombreOMote(hijo, cadenaBusqueda, resultados);
     }
-}
+    }
+    
+    /**
+    * Método para construir y mostrar gráficamente el árbol de descendencia de un nodo seleccionado.
+    * 
+    * @param nodoSeleccionado Nodo raíz desde donde se construirá el árbol de descendencia.
+    */
     
     private void construirArbolDeDescendencia(Nodo nodoSeleccionado) {
     if (nodoSeleccionado == null) return;
@@ -630,7 +753,14 @@ public class Ventana extends javax.swing.JFrame {
     Grafo grafo = new Grafo();
     grafo.construirDesdeArbol(nodoSeleccionado); // Construir solo desde el nodo seleccionado
     grafo.mostrarGrafo(); // Mostrar el grafo
-}
+    }
+    
+    /**
+    * Método para obtener una lista de los antepasados de un nodo específico.
+    * 
+    * @param nodo Nodo desde donde se buscarán los antepasados.
+    * @return Lista de nodos que representan los antepasados del nodo.
+    */
     
     private Lista<Nodo> obtenerAntepasados(Nodo nodo) {
     Lista<Nodo> antepasados = new Lista<>();
@@ -642,7 +772,15 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     return antepasados;
-}
+    }
+    
+    /**
+    * Método para construir gráficamente los antepasados de un nodo.
+    * Agrega los nodos y las conexiones entre ellos al grafo proporcionado.
+    * 
+    * @param antepasados Lista de nodos que representan los antepasados.
+    * @param grafo Grafo donde se agregarán los nodos y conexiones.
+    */
     
     private void construirGrafoDeAntepasados(Lista<Nodo> antepasados, Grafo grafo) {
     Nodo anterior = null;
@@ -657,7 +795,16 @@ public class Ventana extends javax.swing.JFrame {
 
         anterior = actual; // Actualizar el nodo anterior
     }
-}
+    }
+    
+    /**
+    * Método para buscar nodos en el árbol genealógico por título.
+    * Los nodos que coincidan con el título proporcionado se agregan a la lista de resultados.
+    * 
+    * @param nodo Nodo actual desde donde se inicia la búsqueda.
+    * @param tituloBusqueda Título a buscar en los nodos.
+    * @param resultados Lista donde se almacenarán los nodos encontrados.
+    */
     
     private void buscarPorTitulo(Nodo nodo, String tituloBusqueda, Lista<Nodo> resultados) {
     if (nodo == null) return;
@@ -671,7 +818,15 @@ public class Ventana extends javax.swing.JFrame {
     for (Nodo hijo : nodo.getHijos()) {
         buscarPorTitulo(hijo, tituloBusqueda, resultados);
     }
-}
+    }
+    
+    /**
+    * Método para obtener el número máximo de generaciones en un árbol genealógico.
+    * 
+    * @param nodo Nodo raíz desde donde se calculará la profundidad.
+    * @param nivel Nivel actual en el cálculo de la profundidad.
+    * @return Número máximo de generaciones en el árbol.
+    */
     
     private int obtenerMaxGeneracion(Nodo nodo, int nivel) {
     if (nodo == null) return nivel - 1;
@@ -682,7 +837,17 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     return maxNivel;
-}
+    }
+    
+    /**
+    * Método para obtener los integrantes de una generación específica.
+    * Agrega a la lista los nodos que pertenecen a la generación objetivo.
+    * 
+    * @param nodo Nodo actual desde donde se inicia la búsqueda.
+    * @param generacionObjetivo Generación a buscar.
+    * @param nivelActual Nivel actual del nodo en el árbol.
+    * @param resultados Lista donde se almacenarán los nodos de la generación objetivo.
+    */
     
     private void obtenerIntegrantesDeGeneracion(Nodo nodo, int generacionObjetivo, int nivelActual, Lista<Nodo> resultados) {
     if (nodo == null) return;
@@ -694,7 +859,13 @@ public class Ventana extends javax.swing.JFrame {
     for (Nodo hijo : nodo.getHijos()) {
         obtenerIntegrantesDeGeneracion(hijo, generacionObjetivo, nivelActual + 1, resultados);
     }
-}
+    }
+    
+    /**
+    * Método para calcular y mostrar estadísticas del árbol genealógico.
+    * Las estadísticas incluyen el número total de personas, promedio de hijos, generación más larga,
+    * último descendiente y títulos únicos.
+    */
     
     private void mostrarEstadisticas() {
     Nodo raiz = ArbolGlobal.ArbolGlobal.getRaiz();
@@ -720,7 +891,15 @@ public class Ventana extends javax.swing.JFrame {
     estadisticas.append("Número de títulos únicos: ").append(titulosUnicos).append("\n");
 
     JOptionPane.showMessageDialog(this, estadisticas.toString(), "Estadísticas del Árbol", JOptionPane.INFORMATION_MESSAGE);
-}
+    }
+    
+    /**
+    * Método para contar el número total de nodos en un árbol genealógico.
+    *
+    * @param nodo Nodo raíz desde donde se inicia el conteo.
+    * @return Número total de nodos en el árbol.
+    */
+    
     private int contarNodos(Nodo nodo) {
     if (nodo == null) return 0;
 
@@ -729,7 +908,15 @@ public class Ventana extends javax.swing.JFrame {
         contador += contarNodos(hijo);
     }
     return contador;
-}
+    }
+    
+    /**
+    * Método para contar el número total de hijos directos e indirectos de un nodo.
+    *
+    * @param nodo Nodo desde donde se inicia el conteo.
+    * @return Número total de hijos del nodo.
+    */
+    
     private int contarHijos(Nodo nodo) {
     if (nodo == null) return 0;
 
@@ -738,7 +925,15 @@ public class Ventana extends javax.swing.JFrame {
         contador += contarHijos(hijo);
     }
     return contador;
-}
+    }
+    
+    /**
+    * Método para calcular la profundidad máxima de un árbol genealógico.
+    * 
+    * @param nodo Nodo raíz desde donde se calcula la profundidad.
+    * @return Profundidad máxima del árbol.
+    */
+    
     private int calcularProfundidad(Nodo nodo) {
     if (nodo == null || nodo.getHijos().esVacia()) return 1;
 
@@ -747,7 +942,15 @@ public class Ventana extends javax.swing.JFrame {
         maxProfundidad = Math.max(maxProfundidad, calcularProfundidad(hijo));
     }
     return 1 + maxProfundidad;
-}
+    }
+    
+    /**
+    * Método para encontrar el nodo más longevo del árbol basado en la fecha de muerte.
+    * 
+    * @param nodo Nodo raíz desde donde se realiza la búsqueda.
+    * @return Nodo más longevo del árbol.
+    */
+    
     private Nodo encontrarMasLongevo(Nodo nodo) {
     if (nodo == null) return null;
 
@@ -760,31 +963,51 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
     return masLongevo;
-}
+    }
+    
+    /**
+    * Método para contar el número de títulos únicos en un árbol genealógico.
+    * 
+    * @param nodo Nodo raíz desde donde se inicia el conteo.
+    * @return Número de títulos únicos.
+    */
+    
     private int contarTitulosUnicos(Nodo nodo) {
     if (nodo == null) return 0;
 
     HashTable<String, Boolean> titulos = new HashTable<>(100);
     contarTitulosRecursivo(nodo, titulos);
     return titulos.size();
-}
-
-private void contarTitulosRecursivo(Nodo nodo, HashTable<String, Boolean> titulos) {
-    if (nodo == null) return;
-
-    if (!nodo.getTitulo().isEmpty()) {
-        titulos.put(nodo.getTitulo(), true);
     }
-    for (Nodo hijo : nodo.getHijos()) {
-        contarTitulosRecursivo(hijo, titulos);
-    }
-}
+    
+    /**
+    * Método recursivo auxiliar para contar títulos únicos en un árbol.
+    * 
+    * @param nodo Nodo actual desde donde se verifica el título.
+    * @param titulos HashTable donde se almacenan los títulos únicos.
+    */
 
-private void agregarNodoInteractivo() {
-    if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
-        JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+    private void contarTitulosRecursivo(Nodo nodo, HashTable<String, Boolean> titulos) {
+        if (nodo == null) return;
+
+        if (!nodo.getTitulo().isEmpty()) {
+            titulos.put(nodo.getTitulo(), true);
+        }
+        for (Nodo hijo : nodo.getHijos()) {
+            contarTitulosRecursivo(hijo, titulos);
+        }
     }
+    
+    /**
+    * Método interactivo para agregar un nuevo nodo al árbol genealógico.
+    * Solicita datos al usuario, busca el nodo padre y determina la posición automáticamente.
+    */
+
+    private void agregarNodoInteractivo() {
+        if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
+            JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
     // Solicitar el nodo padre
     String nombrePadre = JOptionPane.showInputDialog(this, "Nombre y apellido o mote del nodo padre:");
@@ -894,17 +1117,18 @@ private void agregarNodoInteractivo() {
         padre.agregarHijo(nuevoNodo);
         JOptionPane.showMessageDialog(this, "Nodo agregado correctamente y es con el nombre: " + posicion);
     }
-}
-
-
-
-
-
-private void quitarNodoInteractivo() {
-    if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
-        JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
     }
+
+    /**
+    * Método interactivo para quitar un nodo del árbol genealógico.
+    * Solicita datos al usuario y permite seleccionar el nodo a eliminar si hay múltiples coincidencias.
+    */
+    
+    private void quitarNodoInteractivo() {
+        if (ArbolGlobal.ArbolGlobal == null || ArbolGlobal.ArbolGlobal.getRaiz() == null) {
+            JOptionPane.showMessageDialog(this, "Primero debes cargar o crear el árbol.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
     // Solicitar el nombre del nodo a eliminar
     String nombreNodo = JOptionPane.showInputDialog(this, "Nombre y apellido o mote de la persona a eliminar:");
@@ -970,7 +1194,7 @@ private void quitarNodoInteractivo() {
     } else {
         JOptionPane.showMessageDialog(this, "No se pudo eliminar el nodo.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
+    }
 
     /**
      * @param args the command line arguments

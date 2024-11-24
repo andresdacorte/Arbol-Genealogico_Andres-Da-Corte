@@ -5,23 +5,27 @@
 package arbol_genealogico_andres.da.corte;
 
 /**
- *
- * @author dacor
+ * Clase principal que inicia la ejecución del programa de Árbol Genealógico.
+ * 
+ * @author Andres Da Corte
+ * @since 2024-11-24
  */
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * Método principal que sirve como punto de entrada para la aplicación.
+     * 
+     * @param args Los argumentos de línea de comandos (no se utilizan en este programa).
      */
     public static void main(String[] args) {
-        
+        // Crear una instancia de la clase Inicio, que representa el menú principal
         Inicio menu = new Inicio();
         
+        // Configurar la ventana del menú principal para que aparezca centrada
         menu.setLocationRelativeTo(null);
+        
+        // Hacer visible la ventana del menú principal
         menu.setVisible(true);
-
-       
     }
-    
-    
 }
+
